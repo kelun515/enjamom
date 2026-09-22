@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Хунцэнгэл ээжийн төрсөн өдрийн мэнд — хайр дүүрэн цахим мэндчилгээ" />
+  <title>Хунцэнгэл · Төрсөн өдрийн мэнд</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Mongolian&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <div class="page-bg__orb page-bg__orb--1"></div>
+    <div class="page-bg__orb page-bg__orb--2"></div>
+    <div class="page-bg__orb page-bg__orb--3"></div>
+    <div class="page-bg__grain"></div>
+    <div class="page-bg__vignette"></div>
+  </div>
+  <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+
+  <div id="intro" class="intro" role="dialog" aria-labelledby="intro-title" aria-modal="true">
+    <div class="intro__pattern"></div>
+    <div class="intro__content">
+      <p class="intro__eyebrow">2026</p>
+      <h1 id="intro-title" class="intro__title">Хунцэнгэл</h1>
+      <p class="intro__subtitle">Төрсөн өдрийн мэнд хүргэе</p>
+      <button type="button" id="enter-btn" class="btn btn--gold">
+        <span>Нээх</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="intro__hint">Дуу автоматаар тоглоно</p>
+    </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <a class="logo" href="#top">Хунцэнгэл</a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Цэс нээх" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Үндсэн цэс">
+      <a href="#hero" data-nav="hero">Эхлэл</a>
+      <a href="#letter" data-nav="letter">Захидал</a>
+      <a href="#gallery" data-nav="gallery">Зураг</a>
+    </nav>
+    <button type="button" class="music-toggle" id="music-toggle" aria-label="Дуу унтраах" aria-pressed="true" title="Дуу">
+      <svg class="icon-music-on" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <svg class="icon-music-off" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18V5l12-2v13M3 3l18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-label="Зурагын слайд">
+      <div class="hero__slides" id="hero-slides"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__label">Ээжид зориулсан</p>
+        <h2 class="hero__name">Хунцэнгэл</h2>
+        <p class="hero__wish">Төрсөн өдрийн баярын мэнд!</p>
+        <div class="hero__dots" id="hero-dots" role="tablist" aria-label="Слайд сонгох"></div>
+      </div>
+      <a href="#letter" class="hero__scroll" aria-label="Доош гүйлгэх">
+        <span></span>
+      </a>
+    </section>
+
+    <section class="letter section" id="letter">
+      <div class="section__inner">
+        <header class="section__header reveal">
+          <span class="section__tag">Зүрхнээс</span>
+          <h2 class="section__title">Захидал</h2>
+        </header>
+        <article class="letter-card reveal" id="letter-card">
+          <div class="letter-card__seal" aria-hidden="true">❤</div>
+          <div class="letter-card__body" id="letter-body"></div>
+          <p class="letter-card__sign reveal" id="letter-sign">Чиний охин</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery">
+      <div class="gallery__film-edge gallery__film-edge--top" aria-hidden="true"></div>
+      <div class="section__inner section__inner--wide">
+        <header class="section__header reveal">
+          <span class="section__tag">Дурсамж</span>
+          <h2 class="section__title">Гэр бүлийн зураг</h2>
+          <p class="section__lead">90-ээдийн камер шиг — дулаан, жинхэнэ, хадгалмаар мөчүүд</p>
+        </header>
+
+        <div class="cam-panel reveal" aria-label="Камерын самбар">
+          <div class="cam-panel__left">
+            <span class="cam-panel__rec"><span class="cam-panel__dot"></span> REC</span>
+            <span class="cam-panel__mode">PLAY ▶</span>
+          </div>
+          <div class="cam-panel__center">
+            <span class="cam-panel__label">MEMORY CARD</span>
+            <span class="cam-panel__count" id="gallery-count">08 shots</span>
+          </div>
+          <div class="cam-panel__filters" role="tablist" aria-label="Зурагын харагдац">
+            <button type="button" class="cam-filter is-active" data-filter="scatter" role="tab" aria-selected="true">Бүгд</button>
+            <button type="button" class="cam-filter" data-filter="polaroid" role="tab" aria-selected="false">Polaroid</button>
+            <button type="button" class="cam-filter" data-filter="film" role="tab" aria-selected="false">35mm</button>
+          </div>
+        </div>
+
+        <div class="viewfinder reveal" id="viewfinder">
+          <div class="viewfinder__corner viewfinder__corner--tl"></div>
+          <div class="viewfinder__corner viewfinder__corner--tr"></div>
+          <div class="viewfinder__corner viewfinder__corner--bl"></div>
+          <div class="viewfinder__corner viewfinder__corner--br"></div>
+          <p class="viewfinder__hint">Зураг дээр дарж томруулна</p>
+          <div class="gallery__grid gallery__grid--scatter" id="gallery-grid"></div>
+        </div>
+      </div>
+      <div class="gallery__film-edge gallery__film-edge--bottom" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Хайраар бүтээсэн · Хунцэнгэл ээжид зориулсан</p>
+    <p class="footer__heart" aria-hidden="true">♥</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Зураг томруулах">
+    <div class="lightbox__scanlines" aria-hidden="true"></div>
+    <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Хаах">&times;</button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Өмнөх">&#8249;</button>
+    <figure class="lightbox__figure">
+      <div class="lightbox__frame">
+        <span class="lightbox__stamp" id="lightbox-stamp"></span>
+        <img id="lightbox-img" src="" alt="" />
+        <div class="lightbox__grain" aria-hidden="true"></div>
+      </div>
+      <figcaption class="lightbox__meta">
+        <span id="lightbox-counter">01 / 08</span>
+        <span id="lightbox-caption"></span>
+      </figcaption>
+    </figure>
+    <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Дараах">&#8250;</button>
+  </div>
+
+  <div class="shutter-flash" id="shutter-flash" aria-hidden="true"></div>
+
+  <audio id="bg-audio" loop preload="auto">
+    <source src="audio/birthday-music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
